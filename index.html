@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"> <!-- Запрет на масштабирование -->
-    <title>TeaClicker Web Beta</title>
+    <title>LimeClicker Beta</title> <!-- Название страницы -->
     <style>
         body, html {
             margin: 0;
@@ -12,7 +12,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: orange;
+            background-color: #32CD32; /* Цвет фона изменен на #32CD32 */
             font-family: Arial, sans-serif;
             overflow: hidden; /* Запрет на прокрутку */
         }
@@ -23,15 +23,19 @@
 
         h1 {
             color: white;
-            margin-bottom: 20px;
+            margin-bottom: 20px; /* Отступ между заголовком и количеством кликов */
+            background-color: rgba(128, 128, 128, 0.7); /* Серый фон для названия */
+            padding: 10px; /* Отступ внутри блока с названием */
+            border-radius: 10px; /* Скругление углов блока с названием */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Темная обводка для названия */
         }
 
         button {
-            width: 200px; /* Увеличена ширина кнопки */
-            height: 200px; /* Увеличена высота кнопки */
+            width: 200px; /* Ширина кнопки увеличения кликов */
+            height: 200px; /* Высота кнопки увеличения кликов */
             border: none; /* Убираем рамку */
             border-radius: 50%; /* Делаем кнопку круглой */
-            background-color: #ffcc00; /* Цвет фона кнопки */
+            background-color: #228B22; /* Цвет кнопки изменен на #228B22 */
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Тень для кнопки */
             cursor: pointer; /* Курсор в виде указателя */
             transition: transform 0.2s; /* Плавный переход при наведении */
@@ -49,17 +53,31 @@
             font-size: 24px; /* Размер шрифта для количества кликов */
             color: white; /* Цвет текста */
             margin-top: 20px; /* Отступ сверху */
-            background-color: rgba(255, 255, 255, 0.2); /* Полупрозрачный фон */
+            background-color: rgba(128, 128, 128, 0.7); /* Серый фон для количества кликов */
             padding: 10px; /* Отступ внутри блока */
             border-radius: 10px; /* Скругление углов блока с количеством кликов */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Темная обводка для количества кликов */
+        }
+        
+        .reset-button {
+            width: auto; /* Авто ширина для кнопки обнуления */
+            height: auto; /* Авто высота для кнопки обнуления */
+            padding: 10px 20px; /* Отступы внутри кнопки обнуления */
+            border-radius: 5px; /* Скругление углов кнопки обнуления */
+            background-color: #FF6347; /* Цвет фона кнопки обнуления (томатный) */
+            color: white; /* Цвет текста кнопки обнуления */
+            font-size: 18px; /* Размер шрифта для кнопки обнуления */
+            border: none; /* Убираем рамку у кнопки обнуления */
+            margin-top: 20px; /* Отступ сверху для кнопки обнуления */
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>TeaClicker Web Beta</h1>
-        <button id="clickButton"></button> <!-- Убрали текст на кнопке -->
+        <h1>LimeClicker Beta</h1> <!-- Название -->
+        <button id="clickButton"></button> <!-- Кнопка увеличения кликов -->
         <div class="click-count">Количество кликов: <span id="clickCount">0</span></div> <!-- Отображение количества кликов -->
+        <button class="reset-button" id="resetButton">Обнулить</button> <!-- Кнопка обнуления -->
     </div>
     <script>
         // Получаем сохраненное количество кликов из localStorage
@@ -68,11 +86,21 @@
         // Обновляем отображение количества кликов
         document.getElementById("clickCount").innerText = clickCount;
 
+        // Обработчик события для увеличения кликов
         document.getElementById("clickButton").addEventListener("click", function() {
             clickCount++;
             document.getElementById("clickCount").innerText = clickCount; // Обновляем количество кликов
 
             // Сохраняем количество кликов в localStorage
+            localStorage.setItem('clickCount', clickCount);
+        });
+
+        // Обработчик события для обнуления кликов
+        document.getElementById("resetButton").addEventListener("click", function() {
+            clickCount = 0;
+            document.getElementById("clickCount").innerText = clickCount; // Обновляем количество кликов
+
+            // Сбрасываем количество кликов в localStorage
             localStorage.setItem('clickCount', clickCount);
         });
     </script>
