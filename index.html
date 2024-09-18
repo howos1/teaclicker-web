@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"> <!-- Добавлено user-scalable=no -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"> <!-- Запрет на масштабирование -->
     <title>TeaClicker Web Beta</title>
     <style>
         body, html {
@@ -14,6 +14,7 @@
             align-items: center;
             background-color: orange;
             font-family: Arial, sans-serif;
+            overflow: hidden; /* Запрет на прокрутку */
         }
 
         .container {
@@ -26,8 +27,8 @@
         }
 
         button {
-            width: 150px; /* Увеличена ширина кнопки */
-            height: 150px; /* Увеличена высота кнопки */
+            width: 200px; /* Увеличена ширина кнопки */
+            height: 200px; /* Увеличена высота кнопки */
             border: none; /* Убираем рамку */
             border-radius: 50%; /* Делаем кнопку круглой */
             background-color: #ffcc00; /* Цвет фона кнопки */
