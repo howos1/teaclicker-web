@@ -86,13 +86,28 @@
         // Обновляем отображение количества кликов
         document.getElementById("clickCount").innerText = clickCount;
 
-        // Обработчик события для увеличения кликов
+        // Переменная для подсчета кликов по заголовку
+        let titleClickCount = 0;
+
+        // Обработчик события для увеличения кликов на кнопке
         document.getElementById("clickButton").addEventListener("click", function() {
             clickCount++;
             document.getElementById("clickCount").innerText = clickCount; // Обновляем количество кликов
 
             // Сохраняем количество кликов в localStorage
             localStorage.setItem('clickCount', clickCount);
+        });
+
+        // Обработчик события для заголовка
+        document.querySelector("h1").addEventListener("click", function() {
+            titleClickCount++;
+            
+            // Проверяем, было ли 5 кликов по заголовку
+            if (titleClickCount === 5) {
+                document.getElementById("clickButton").style.backgroundImage = "url('https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Halal_logo.svg/1200px-Halal_logo.svg.png')";
+                document.getElementById("clickButton").style.backgroundSize = "cover"; // Чтобы изображение заполнило кнопку
+                titleClickCount = 0; // Сбрасываем счетчик кликов по заголовку
+            }
         });
 
         // Обработчик события для обнуления кликов
@@ -102,6 +117,9 @@
 
             // Сбрасываем количество кликов в localStorage
             localStorage.setItem('clickCount', clickCount);
+            
+            // Сбрасываем изображение на кнопке при обнулении
+            document.getElementById("clickButton").style.backgroundImage = "none"; 
         });
     </script>
 </body>
